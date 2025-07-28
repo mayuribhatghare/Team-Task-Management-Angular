@@ -1,0 +1,107 @@
+<div class="unassigned-task-container">
+  <mat-card class="task-card">
+    <mat-card-title class="title">Unassigned Tasks</mat-card-title>
+    <mat-card-content>
+
+      <!-- Task Table or No Task Message -->
+        <div class="table-wrapper">
+          <table mat-table [dataSource]="unassignedTasks" class="mat-elevation-z1 full-width-table" matSort>
+
+            <!-- Title -->
+            <ng-container matColumnDef="Title">
+              <th mat-header-cell *matHeaderCellDef> Title </th>
+              <td mat-cell *matCellDef="let task"> 
+                <div class="truncate-text" matTooltip="{{ task.Title }}">
+                  {{ task.Title }}
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Description -->
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef> Description </th>
+              <td mat-cell *matCellDef="let task">
+                <div class="truncate-text" matTooltip="{{ task.Description }}">
+                  {{ task.Description }}
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Priority -->
+            <ng-container matColumnDef="Priority">
+              <th mat-header-cell *matHeaderCellDef> Priority </th>
+              <td mat-cell *matCellDef="let task; let i = index">
+                <mat-form-field appearance="outline" class="tiny-field">
+                  <mat-select [formControl]="getFormControl(i,'Priority')">
+                    <mat-option *ngFor="let p of priorityOptions" [value]="p.value">{{ p.label }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="getFormControl(i,'Priority')?.hasError('required')">Priority is required</mat-error>
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Status -->
+            <ng-container matColumnDef="Status">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let task; let i = index">
+                <mat-form-field appearance="outline" class="tiny-field" >
+                  <mat-select [formControl]="getFormControl(i,'Status')" >
+                    <mat-option *ngFor="let s of statusOptions" [value]="s.value">{{ s.label }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="getFormControl(i,'Status')?.hasError('required')">Status is required</mat-error>
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- DueDate -->
+            <ng-container matColumnDef="DueDate">
+              <th mat-header-cell *matHeaderCellDef> Due Date </th>
+              <td mat-cell *matCellDef="let task; let i = index">
+                <mat-form-field appearance="outline" class="tiny-field">
+                  <input matInput [matDatepicker]="picker" [formControl]="getFormControl(i,'DueDate')">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="getFormControl(i,'DueDate')?.hasError('required')">Due Date is required</mat-error>
+                  <mat-error *ngIf="getFormControl(i,'DueDate')?.hasError('notfutureDate')">Due Date must be future Date</mat-error>
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Assignee -->
+            <ng-container matColumnDef="Assignee">
+              <th mat-header-cell *matHeaderCellDef> Assign To </th>
+              <td mat-cell *matCellDef="let task; let i = index">
+                <mat-form-field appearance="outline" class="tiny-field">
+                  <mat-select [formControl]="getFormControl(i,'UserId')" placeholder="Select User">
+                    <mat-option *ngFor="let user of users" [value]="user.UserId">{{ user.UserName }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="getFormControl(i,'UserId')?.hasError('required')">User is required</mat-error>
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Action -->
+            <ng-container matColumnDef="Actions">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let task; let i = index">
+                <button mat-raised-button color="primary" (click)="assignTask(i)">Assign</button>
+              </td>
+            </ng-container>
+
+            <!-- Render header and rows -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="custom-header-row"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      
+
+      <!-- Paginator - Always in DOM -->
+      <mat-paginator
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 20]"
+        [showFirstLastButtons]="true">
+      </mat-paginator>
+
+    </mat-card-content>
+  </mat-card>
+</div>

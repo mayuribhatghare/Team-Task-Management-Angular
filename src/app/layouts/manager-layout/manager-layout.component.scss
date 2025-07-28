@@ -1,0 +1,105 @@
+/* Layout Wrapper */
+.layout-wrapper {
+  padding: 1.5rem 2rem;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #ede7f6;
+
+  .manager-layout-container {
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Sidebar (sidenav) */
+::ng-deep .mat-sidenav {
+  background-color: #ede7f6;
+  color: #333;
+
+  .mat-toolbar {
+    background-color: #512da8;
+    font-weight: 600;
+    color: white;
+  }
+
+  .mat-nav-list {
+    a.mat-list-item {
+      color: white !important;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+
+      &.active,
+      &:hover {
+        background-color: #9575cd;
+        color: white !important;
+      }
+    }
+  }
+}
+
+/* Top bar */
+.top-bar {
+  background-color: #673ab7;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+
+  .toolbar-title {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .logout-btn {
+    color: white;
+    font-weight: 500;
+    font-size: 1rem; // ⬅️ Increased font size
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    mat-icon {
+      margin-right: 4px;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+}
+
+/* Main content area */
+.mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  background-color: #fff;
+  color: #333;
+  border-radius: 0 0 16px 16px;
+}
+
+/* Footer */
+.footer {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+  background-color: #f3e5f5;
+  font-weight: 500;
+  border-top: 1px solid #ddd;
+}

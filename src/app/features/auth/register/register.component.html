@@ -1,0 +1,76 @@
+<div class="register-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-card class="register-card">
+      <mat-card-title class="title">Register</mat-card-title>
+      <mat-card-content class="card-content">
+
+        <!-- Username -->
+        <mat-form-field appearance="outline" class="full-width first-field">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="UserName" />
+          <mat-error *ngIf="hasError('UserName', 'required')">Username is required</mat-error>
+          <mat-error *ngIf="hasError('UserName', 'minlength')">Minimum 4 characters</mat-error>
+          <mat-error *ngIf="hasError('UserName', 'maxlength')">Maximum 20 characters</mat-error>
+          <mat-error *ngIf="hasError('UserName', 'pattern')">
+            Start with a letter; only letters, numbers, underscores; no spaces.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="Email" />
+          <mat-error *ngIf="hasError('Email', 'required')">Email is required</mat-error>
+          <mat-error *ngIf="hasError('Email', 'email')">Enter a valid email</mat-error>
+          <mat-error *ngIf="hasError('Email', 'maxlength')">Max 50 characters allowed</mat-error>
+          <mat-error *ngIf="hasError('Email', 'pattern')">Email cannot contain spaces</mat-error>
+        </mat-form-field>
+
+        <!-- Phone -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Phone</mat-label>
+          <input matInput type="tel" formControlName="PhoneNumber" />
+          <mat-error *ngIf="hasError('PhoneNumber', 'required')">Phone is required</mat-error>
+          <mat-error *ngIf="hasError('PhoneNumber', 'pattern')">10-digit Indian number, no spaces</mat-error>
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="Password" />
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="hasError('Password', 'required')">Password is required</mat-error>
+          <mat-error *ngIf="hasError('Password', 'minlength')">Minimum 8 characters</mat-error>
+          <mat-error *ngIf="hasError('Password', 'maxlength')">Max 20 characters allowed</mat-error>
+          <mat-error *ngIf="hasError('Password', 'pattern')">
+            Must include uppercase, lowercase, digit, special char & no spaces
+          </mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+
+    <mat-card-actions class="action-buttons">
+      <button mat-raised-button color="primary" type="submit">Register</button>
+      <button mat-raised-button class="reset-button" type="button" (click)="resetForm()">
+      Reset
+      </button>
+      <button mat-icon-button color="accent" type="button">
+      </button>
+    </mat-card-actions>
+
+    <!-- Add this below mat-card-actions -->
+    <div class="login-redirect">
+      <span>Already registered?</span>
+      <button mat-button color="primary" class="login-button" (click)="navigateToLogin()">Login here</button>
+    </div>
+
+
+    </mat-card>
+    </form>
+
+  <footer class="footer">
+    Built with 💖 by <strong>Mayuri Bhatghare</strong>
+  </footer>
+</div>

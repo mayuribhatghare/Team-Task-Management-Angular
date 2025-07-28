@@ -1,0 +1,95 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+
+  form {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .register-card {
+    padding: 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+  }
+
+  .title {
+    background-color: #673ab7;
+    color: white;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+
+  .card-content {
+    padding: 2rem;
+    padding-top: 0;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    .mat-input-element {
+      font-weight: 500;
+    }
+
+    .mat-form-field-outline {
+      border-radius: 12px;
+    }
+
+    &.mat-focused .mat-form-field-outline-thick {
+      border-color: #673ab7;
+    }
+  }
+
+  .first-field {
+    margin-top: 1rem;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem 2rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    button {
+      flex: 1 1 auto;
+      min-width: 100px;
+    }
+
+    .theme-toggle {
+      flex: 0 0 auto;
+      margin-left: auto;
+    }
+  }
+
+  .footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #777;
+  }
+   .register-button {
+  background-color: #9575cd; // Light purple
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(103, 58, 183, 0.3);
+
+  &:hover {
+    background-color: #7e57c2;
+  }
+}
+}
+
+

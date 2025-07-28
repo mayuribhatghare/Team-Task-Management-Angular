@@ -1,0 +1,55 @@
+$purple-theme: #512da8;
+
+.my-tasks-wrapper {
+  padding: 1.5rem;
+}
+
+.my-tasks-card {
+  padding: 1rem;
+}
+
+mat-card-title {
+  color: $purple-theme;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.filter-input {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+mat-chip.low {
+  background-color: #81c784;
+  color: white;
+}
+
+mat-chip.medium {
+  background-color: #ffb74d;
+  color: white;
+}
+
+mat-chip.high {
+  background-color: #e57373;
+  color: white;
+}
+
+.no-tasks {
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+  color: #888;
+}
+.truncate-text {
+  max-width: 200px; // 💡 Adjust as needed for column space
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+ 

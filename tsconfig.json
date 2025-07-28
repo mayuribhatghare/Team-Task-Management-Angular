@@ -1,22 +1,27 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
-    "strict": true,
-    "noImplicitOverride": true,
+    "baseUrl": "src",                          // Tells TypeScript where the root path starts
+    "paths": {
+      "@environments/*": ["environments/*"],   // So '@environments/xyz' → 'src/environments/xyz'
+      "@app/*": ["app/*"] , 
+      "@authService/*" :["app/core/services/*"], 
+      "@core/*" :["app/core/*"]                   // So '@app/xyz' → 'src/app/xyz'
+    },
+    "outDir": "./dist/out-tsc",                // Compiled JS files output directory
+    "strict": true,                            // Enables all strict type-checking options
+    "noImplicitOverride": true,                // Forces you to explicitly mark method overrides
     "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": true,                 // Ensures every function returns a value
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true,                      // Skips type checking for lib files (like node_modules)
     "isolatedModules": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true,            // Needed for Angular decorators (@Component, etc.)
     "moduleResolution": "bundler",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022"
+    "target": "ES2022",                        // Modern JavaScript target
+    "module": "ES2022"                         // Use modern ES modules
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

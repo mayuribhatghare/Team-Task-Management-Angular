@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f5fafd;
+}
+
+* {
+  box-sizing: border-box;
+}
+tr.custom-header-row {
+  background-color: #ede7f6;
+}
+
+tr.custom-header-row th.mat-header-cell {
+  color: #4a148c;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 12px 16px;
+  border-bottom: 2px solid #ba68c8;
+}
+::ng-deep .mat-snack-bar-container.snackbar-success {
+  background-color: #4caf50 !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+::ng-deep .mat-snack-bar-container.snackbar-error {
+  background-color: #f44336 !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+::ng-deep .mat-snack-bar-container.snackbar-info {
+  background-color: #2196f3 !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+::ng-deep .mat-snack-bar-container.snackbar-warning {
+  background-color: #ff9800 !important;
+  color: black !important;
+  font-weight: 600;
+}

@@ -1,0 +1,30 @@
+<div class="layout-wrapper">
+  <mat-sidenav-container class="user-layout-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+      <mat-toolbar class="sidenav-header">Menu</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/users/tasks" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">📋 My Tasks</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="top-bar">
+        Team Task Management Tool | User: {{ userName }} | Role: User
+        <span class="spacer"></span>
+        <button mat-button class="logout-btn" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          Logout
+          </button>
+      </mat-toolbar>
+
+      <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+
+      <footer class="footer">
+        Built with ❤️ by <strong>Mayuri Bhatghare</strong>
+      </footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

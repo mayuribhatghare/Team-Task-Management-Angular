@@ -1,0 +1,114 @@
+<form [formGroup]="reportForm" class="filters">
+  <!-- User Dropdown -->
+  <mat-form-field appearance="outline">
+    <mat-label>User</mat-label>
+    <mat-select formControlName="userId">
+      <mat-option value="">All</mat-option>
+      <mat-option *ngFor="let user of users" [value]="user.UserId">
+        {{ user.UserName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Status Dropdown -->
+  <mat-form-field appearance="outline">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option *ngFor="let s of statusOptions" [value]="s.value">
+        {{ s.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Priority Dropdown -->
+  <mat-form-field appearance="outline">
+    <mat-label>Priority</mat-label>
+    <mat-select formControlName="priority">
+      <mat-option *ngFor="let p of priorityOptions" [value]="p.value">
+        {{ p.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Search -->
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search</mat-label>
+    <input matInput formControlName="search" placeholder="Search by title/user/priority/status">
+  </mat-form-field>
+</form>
+
+<!-- Task Table with matNoDataRow -->
+<table mat-table [dataSource]="CreateReportSource" class="mat-elevation-z1 report-table" matSort>
+
+  <!-- Task ID -->
+  <ng-container matColumnDef="TaskId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Task ID</th>
+    <td mat-cell *matCellDef="let task">{{ task.TaskId }}</td>
+  </ng-container>
+
+  <!-- Title -->
+  <ng-container matColumnDef="Title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+    <td mat-cell *matCellDef="let task">{{ task.Title }}</td>
+  </ng-container>
+
+  <!-- User -->
+  <ng-container matColumnDef="UserName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Assigned User</th>
+    <td mat-cell *matCellDef="let task">{{ task.UserName }}</td>
+  </ng-container>
+
+  <!-- Status -->
+  <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+    <td mat-cell *matCellDef="let task">{{ task.Status }}</td>
+  </ng-container>
+
+  <!-- Priority -->
+  <ng-container matColumnDef="Priority">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Priority</th>
+    <td mat-cell *matCellDef="let task">{{ task.Priority }}</td>
+  </ng-container>
+
+  <!-- Due Date -->
+  <ng-container matColumnDef="DueDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Due Date</th>
+    <td mat-cell *matCellDef="let task">{{ task.DueDate }}</td>
+  </ng-container>
+
+  <!-- OverDue -->
+  <ng-container matColumnDef="OverDue">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Due Status</th>
+    <td mat-cell *matCellDef="let task">
+      <span [ngClass]="task.OverDue ? 'overdue-yes' : 'overdue-no'">
+        {{ task.OverDue ? 'Overdue' : 'On Time' }}
+      </span>
+    </td>
+  </ng-container>
+
+  <!-- Header -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="custom-header-row"></tr>
+
+  <!-- Rows -->
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- Empty Row -->
+  <tr class="no-data-text" *matNoDataRow>
+    <td [attr.colspan]="displayedColumns.length">
+      No report data found for the selected filters.
+    </td>
+  </tr>
+</table>
+
+<mat-paginator [length]="totalTasks" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+
+<!-- Action Buttons -->
+<div class="report-actions">
+  <button mat-stroked-button color="primary" (click)="downloadCsv()" [disabled]="CreateReportSource.data.length === 0"
+  matTooltip="Download CSV (opens in Excel)">
+    ⬇️ Export to CSV
+  </button>
+  <button mat-stroked-button color="warn" (click)="resetFilters()">
+    🧹 Reset Filters
+  </button>
+</div>

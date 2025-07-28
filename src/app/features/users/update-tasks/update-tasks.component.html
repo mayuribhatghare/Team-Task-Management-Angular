@@ -1,0 +1,118 @@
+<form [formGroup]="updateTaskForm" (ngSubmit)="saveChanges()">
+  <div class="update-task-container">
+    <mat-card class="update-task-card">
+
+      <!-- 🔙 Back -->
+      <div class="back-button" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon> Back
+      </div>
+
+      <!-- Title -->
+      <mat-card-title class="task-title">📝 <span>Update Task</span></mat-card-title>
+
+      <!-- Task Title -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Task Title</mat-label>
+          <input matInput formControlName="Title" />
+          <mat-error *ngIf="hasError('Title','required') && isManager">Title is required</mat-error>
+          <mat-error *ngIf="hasError('Title','maxlength') && isManager">Maximum 200 characters is allowed</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Description -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>📄 Description</mat-label>
+          <input matInput formControlName="Description" />
+          <mat-error *ngIf="hasError('Description','maxlength') && isManager">Maximum 2000 characters is allowed</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Due Date -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>📅 Due Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="DueDate" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="hasError('DueDate','futureValidator') && isManager">Past Due Date is not allowed</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Status -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>🎯 Status</mat-label>
+          <mat-select formControlName="Status">
+            <mat-option *ngFor="let s of statusList" [value]="s.value">{{ s.label }}</mat-option>    
+          </mat-select>
+          <mat-error *ngIf="hasError('Status','required') && isUser">Status is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Priority -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>🚩 Priority</mat-label>
+          <mat-select formControlName="Priority">
+            <mat-option *ngFor="let p of priorityList" [value]="p.value">{{ p.label }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="hasError('Priority','required') && isManager">Priorty is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Comment TextArea -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>💬 Comment</mat-label>
+          <textarea matInput rows="4" formControlName="Comment" placeholder="Add your comment..."></textarea>
+          <mat-error *ngIf="hasError('Comment','maxlength')">Maximum 4000 characters are allowed</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Buttons -->
+      <div class="action-buttons">
+        <button mat-raised-button class="save-button" type="submit" >
+          <mat-icon>save</mat-icon> Save Changes
+        </button>
+
+        <button mat-raised-button class="cancel-button" type="button" (click)="goBack()">
+          <mat-icon>cancel</mat-icon> Cancel
+        </button>
+
+        <button mat-icon-button color="accent"  type ="button">
+          <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+      </div>
+
+      <!-- ✅ Existing Comments (moved outside action-buttons) -->
+    <div class="existing-comments" *ngIf="hasValidComments()">
+
+      <h3 class="comment-title">📋 Comments</h3>
+
+    <div class="comment-box" *ngFor="let comment of commentList">
+    <!-- Comment text -->
+    <p class="comment-text" *ngIf="comment.Comment">{{ comment.Comment }}</p>
+
+    <!-- Author & timestamp -->
+    <div class="comment-meta">
+      <div>
+        <span class="comment-author">Added by: {{ comment.UserName }}</span>
+        <span class="comment-time">• {{ comment.GetDate | date:'medium' }}</span>
+      </div>
+
+      <!-- Delete button -->
+      <button mat-icon-button matTooltip="Delete this comment" type="button"
+        class="delete-button"(click)="openConfirmDialog(comment.CommentId)" >
+      <mat-icon color="warn">delete</mat-icon>
+      </button>
+     </div>
+    </div>
+    </div>
+
+
+
+    </mat-card>
+  </div>
+</form>

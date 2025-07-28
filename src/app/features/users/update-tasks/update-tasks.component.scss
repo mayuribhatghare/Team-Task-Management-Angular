@@ -1,0 +1,185 @@
+.update-task-container {
+  padding: 2rem;
+  background-color: #f4f0fb;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.update-task-card {
+  width: 100%;
+  max-width: 850px;
+  padding: 3rem 2.5rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(98, 0, 234, 0.1);
+  box-sizing: border-box;
+}
+
+.task-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #6200ea;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button {
+  cursor: pointer;
+  color: #6200ea;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.form-row {
+  width: 100%;
+  margin-bottom: 1.8rem;
+}
+
+.full-width {
+  width: 100%;
+
+  ::ng-deep input,
+  ::ng-deep textarea,
+  ::ng-deep mat-select {
+    font-size: 1rem;
+    padding: 0.75rem;
+    min-height: 48px;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-size: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  button {
+    min-width: 130px;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .save-button {
+    background-color: #673ab7;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(103, 58, 183, 0.3);
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #5e35b1;
+    }
+  }
+
+  .cancel-button {
+    background-color: #e0e0e0;
+    color: #333;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #d5d5d5;
+    }
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+  }
+}
+
+
+/* ------------------------------------------
+   Comments Section Styling
+------------------------------------------ */
+
+.existing-comments {
+  margin-top: 2rem;
+  padding: 0 1rem;
+
+  .comment-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #5e35b1; // Purple tone
+  }
+
+  .comment-box {
+    background-color: #f3e5f5; // Soft purple
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .comment-text {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .comment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .author-time {
+    display: flex;
+    flex-direction: column;
+
+    .comment-author {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #4527a0;
+    }
+
+    .comment-time {
+      font-size: 0.85rem;
+      color: #757575;
+    }
+  }
+
+  .delete-button {
+  color: #8B0000 !important; // 🔴 Solid dark red
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 0.3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: rgba(139, 0, 0, 0.1); // dark red transparent hover
+  }
+
+  mat-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+}
+}

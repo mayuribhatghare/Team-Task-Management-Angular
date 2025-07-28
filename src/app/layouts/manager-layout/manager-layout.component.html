@@ -1,0 +1,35 @@
+<div class="layout-wrapper">
+  <mat-sidenav-container class="manager-layout-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+      <mat-toolbar class="sidenav-header">Menu</mat-toolbar>
+     <mat-nav-list>
+  
+    <a mat-list-item routerLink="/manager/unassignedtask" routerLinkActive="active">📌 Unassigned Tasks</a>
+    <a mat-list-item routerLink="/manager/create-task" routerLinkActive="active">➕ Create Task</a>
+    <a mat-list-item routerLink="/manager/viewtask" routerLinkActive="active">📋 View Users Tasks</a>
+    <a mat-list-item routerLink="/manager/change-role" routerLinkActive="active">🔁 Change Role</a>
+    <a mat-list-item routerLink="/manager/create-report" routerLinkActive="active">➕ View Report</a>
+  </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="top-bar">
+        Team Task Management Tool | User: {{ userName }} | Role: Manager
+        <span class="spacer"></span>
+        <button mat-button class="logout-btn" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          Logout
+          </button>
+      </mat-toolbar>
+
+      <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+
+      <footer class="footer">
+        Built with ❤️ by <strong>Mayuri Bhatghare</strong>
+      </footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

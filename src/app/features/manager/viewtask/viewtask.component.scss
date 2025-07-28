@@ -1,0 +1,110 @@
+.assigned-task-container {
+  padding: 24px;
+  background-color: #f8f5fc;
+
+  .assigned-task-card {
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(98, 0, 234, 0.2);
+    padding: 24px;
+  }
+
+  .assigned-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #6a1b9a; // Purple
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .dropdown-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .user-select {
+    width: 300px;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  .no-tasks {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+    padding: 20px;
+  }
+
+  .truncate-text {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  // ✅ Proper header style with deep selector
+  ::ng-deep .mat-header-row {
+    background-color: #d1c4e9 !important; // Soft lavender background
+  }
+
+  ::ng-deep .mat-header-cell {
+    color: #4a148c !important; // Dark purple text
+    font-weight: bold !important;
+    font-size: 15px !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ba68c8 !important;
+    padding: 12px 16px;
+  }
+
+  ::ng-deep .mat-cell {
+    background-color: #ffffff;
+    padding: 12px 16px;
+    color: #333;
+  }
+
+  ::ng-deep .mat-row:nth-child(even) .mat-cell {
+    background-color: #f3e5f5;
+  }
+
+  ::ng-deep .mat-row:hover .mat-cell {
+    background-color: #ede7f6;
+  }
+
+  ::ng-deep .mat-select-panel {
+    background-color: #f3e5f5;
+    color: #4a148c;
+  }
+  .action-header,
+.action-cell {
+  text-align: center;
+  width: 120px; /* You can adjust this to match your layout */
+  padding: 0 12px;
+}
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  button {
+    background-color: #ede7f6;
+    color: #6a1b9a;
+
+    &:hover {
+      background-color: #d1c4e9;
+    }
+
+    mat-icon {
+      font-size: 20px;
+    }
+  }
+}
+
+}
+
+

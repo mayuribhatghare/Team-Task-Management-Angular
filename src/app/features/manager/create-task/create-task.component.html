@@ -1,0 +1,48 @@
+<div class="register-container">
+  <form [formGroup]="createTaskForm" (ngSubmit)="onCreateTask()">
+    <mat-card class="register-card">
+      <mat-card-title class="title">Create Task</mat-card-title>
+      <mat-card-content class="card-content">
+
+        <!-- Title -->
+        <mat-form-field appearance="outline" class="full-width first-field">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="Title" />
+          <mat-error *ngIf="hasError('Title', 'required')">Title is required</mat-error>
+          <mat-error *ngIf="hasError('Title','minlength')">Minimum 3 characters is required</mat-error>
+         <mat-error *ngIf="hasError('Title','maxlength')">Maximum 200 characters are allowed</mat-error>
+          <mat-error *ngIf="hasError('Title','pattern')">Title can only contain letters, numbers, spaces, and characters like - : , . / _ ( ) and must start with letter</mat-error>
+        </mat-form-field>
+
+        <!-- Description -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput rows="3" formControlName="Description"></textarea>
+          <mat-error *ngIf="hasError('Description', 'maxlength')">
+            Maximum 2000 characters allowed
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Priority (Disabled) -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Priority</mat-label>
+          <input matInput value="Medium" disabled />
+        </mat-form-field>
+
+        <!-- Status (Disabled) -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Status</mat-label>
+          <input matInput value="Pending" disabled />
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <mat-card-actions class="action-buttons">
+        <button mat-raised-button color="primary" type="submit">Create</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+  <footer class="footer">
+  </footer>
+</div>
