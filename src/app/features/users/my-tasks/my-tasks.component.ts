@@ -61,10 +61,14 @@ constructor(private taskService : TaskitemsService,
     this.taskService.getTasks(userId).subscribe({
        next:(task) => {
         this.tasks = task ?? [];
-        this.dataSource.filterPredicate = (data:UserTaskResponseDto,filter: string)=>{
-          const combined =`${data.Title} ${data.Status} ${data.Priority}`.toLocaleLowerCase()
-          return combined.includes(filter);
-        }
+        this.dataSource.filterPredicate = (data: UserTaskResponseDto, filter: string): boolean => {
+        const searchString = filter.trim().toLowerCase();
+      return (
+          data.Title?.toLowerCase().includes(searchString) ||
+          data.Status?.toLowerCase().includes(searchString) ||
+        data.Priority?.toLowerCase().includes(searchString)
+        );
+      };
           this.dataSource.data = task;
           this.dataSource.paginator = this.paginator;
        },
@@ -79,7 +83,7 @@ constructor(private taskService : TaskitemsService,
   
   applyFilter(event : Event)
   {
-      const filterValue = (event.target as HTMLInputElement).value.trim();
+      const filterValue = (event.target as HTMLInputElement).value.trim().toLocaleLowerCase();
     this.dataSource.filter =filterValue;
   }
 }
