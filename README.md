@@ -1,59 +1,80 @@
-# TeamTaskUi
+# Team Task Management - Angular Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
+This is the **Angular 19** frontend for the **Team Task Management Tool**, built with **Angular Material** for a modern UI.
 
-## Development server
+##  Features
 
-To start a local development server, run:
+- User authentication with JWT
+- Role-based access control (User & Manager)
+- Task creation, update, and assignment
+- Status & priority filters
+- Reports 
+- Angular Material
+
+##  Tech Stack
+
+- **Angular 19**
+- **Angular Material**
+- **TypeScript**
+- **RxJS**
+- **SCSS**
+
+## Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/mayuribhatghare/team-task-management-angular
+
+# Navigate into the folder
+cd Team-Task-Management-Angular
+
+# Install dependencies
+npm install
+```
+
+##  Run Locally
+
+```bash
+# Development server
 ng serve
+
+# Open in browser
+http://localhost:4200/
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+##  Environment Setup
 
-## Code scaffolding
+Create a file named `environment.ts` inside `src/environments/` with:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'https://localhost:5000/api'
+};
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+For production, update `environment.prod.ts` accordingly.
 
-```bash
-ng generate --help
+##  Folder Structure
+
+```
+src/
+ ├── app/
+ │   ├── components/    # UI components
+ │   ├── features/         # Feature pages
+ │   ├── services/      # API calls
+ │   ├── models/        # Interfaces & types
+ │   └── guards/        # Route guards
+ ├── assets/            # Static files
+ └── environments/      # Environment configs
 ```
 
-## Building
+##  Author
 
-To build the project run:
+**Mayuri Bhatghare**  
+.NET & Angular Developer  
+mayuri.bhatghare@gmail.com
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+⭐ If you like this project, give it a star on GitHub!
